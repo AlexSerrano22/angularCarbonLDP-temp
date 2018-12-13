@@ -1,13 +1,10 @@
 <div class="b-blog">
-  <app-post-list/>
+  <app-post-list [postsArray]="posts" (clickElement)="handleClick($event)">
+  </app-post-list>
 
-  <div *ngFor="let post of posts">
-    <div *ngIf="post.id">
-      <h1>{{post.author}} - {{post.title}}</h1>
-      <p class="b-blog__post-body">
-        {{post.body | cutString: 50}}
-      </p>
-    </div>
-  </div>
+
+  <input type="text" [(ngModel)]="comment">
+
+  {{comment}}
 </div>
 

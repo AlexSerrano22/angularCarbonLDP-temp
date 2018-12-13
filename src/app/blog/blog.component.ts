@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {PostService} from '../services/post.service';
 
 @Component({
   selector: 'app-blog',
@@ -7,32 +8,23 @@ import {Component} from '@angular/core';
 })
 export class BlogComponent {
 
-  posts: Array<Post> = [{
-    title: 'my first post',
-    body: `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-    author: 'Alex',
-    id: 1
-  },
-    {
-      title: 'my second post',
-      body: `Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
-      author: 'Alex',
-      id: 2
-    }];
+  hasClass = true;
+  posts: Array<Post> = [];
 
-  constructor() {
+  comment = '';
+
+  constructor(private _postService: PostService) {
+    this._postService.getPosts().subscribe(
+      (data: Array<Post>) => {
+        this.posts = data;
+      },
+      () => {
+      });
   }
 
+  handleClick(e) {
+    console.log(e);
+  }
 
 }
 

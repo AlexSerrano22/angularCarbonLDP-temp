@@ -1,0 +1,9 @@
+
+<ng-container *ngFor="let post of postsArray">
+  <div *ngIf="post.id">
+    <h1>{{post.author}} - {{post.title}}</h1>
+    <p  [ngClass]="{'b-blog__post-body': hasClass }" (click)="handleClick($event)" >
+      {{post.body | cutString: 50}}
+    </p>
+  </div>
+</ng-container>

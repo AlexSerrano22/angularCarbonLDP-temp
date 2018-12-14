@@ -12,5 +12,22 @@
       "author": "Alex",
       "id": 2
     }
+  ],
+  "comments": [
+    {
+      "body": "hola",
+      "created": "2018-12-13T16:41:15.979Z",
+      "id": 1
+    },
+    {
+      "body": "new comment",
+      "created": "2018-12-13T16:49:36.444Z",
+      "id": 2
+    },
+    {
+      "body": "hello world",
+      "created": "2018-12-13T16:49:44.757Z",
+      "id": 3
+    }
   ]
 }

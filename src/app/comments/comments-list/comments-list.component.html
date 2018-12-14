@@ -1,0 +1,10 @@
+<ng-container *ngFor="let comment of comments">
+  <app-comment [comment]="comment">
+  </app-comment>
+</ng-container>
+
+
+<div>
+  <input type="text" [(ngModel)]="comment.body">
+  <button class="btn btn-info" (click)="handleCreateComment()">Send</button>
+</div>

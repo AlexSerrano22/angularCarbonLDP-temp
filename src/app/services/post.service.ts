@@ -1,22 +1,40 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
 import {Post} from '../blog/blog.component';
-import {map} from 'rxjs/operators';
+import {Document} from 'carbonldp/Document';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class PostService implements PostCarbon {
 
   constructor(private _http: HttpClient) {
   }
 
-  getPosts(): Observable<Array<Post>> {
-    return this._http.get('http://localhost:3000/posts').pipe(map((data: Array<Post>) => data));
+  createPost(post: Post): Promise<Post & Document> {
+
   }
 
-  getPost(id): Observable<Post> {
-    return this._http.get(`http://localhost:3000/posts/${id}`).pipe(map((data: Post) => data));
+  getPost(id: string): Promise<Post & Document> {
+
   }
+
+  getAllPosts(): Promise<Array<Post & Document>>{
+
+  }
+
+
+}
+
+
+export interface PostCarbon {
+  createPost(post: Post): Promise<Post & Document>;
+  getAllPosts(): Promise<Array<Post & Document>>;
+  getPost(id: string): Promise<Post & Document>;
+}
+
+export interface Post {
+  id?: number;
+  title: string;
+  body: string;
 }

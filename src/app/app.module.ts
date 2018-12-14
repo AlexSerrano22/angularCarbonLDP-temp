@@ -10,6 +10,10 @@ import { PostListComponent } from './posts/post-list/post-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PostComponent } from './posts/post/post.component';
 import { CommentComponent } from './comments/comment/comment.component';
+import { CommentsListComponent } from './comments/comments-list/comments-list.component';
+import { HeaderComponent } from './nav/header/header.component';
+import {CarbonLDP} from 'carbonldp';
+import carbon from './carbon/carbon.config';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,9 @@ import { CommentComponent } from './comments/comment/comment.component';
     CutStringPipe,
     PostListComponent,
     PostComponent,
-    CommentComponent
+    CommentComponent,
+    CommentsListComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +33,9 @@ import { CommentComponent } from './comments/comment/comment.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: CarbonLDP, useValue: carbon
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

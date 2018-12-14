@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {PostService} from '../services/post.service';
+import {CarbonLDP} from 'carbonldp';
 
 @Component({
   selector: 'app-blog',
@@ -13,7 +14,8 @@ export class BlogComponent {
 
   comment = '';
 
-  constructor(private _postService: PostService) {
+  constructor(private _postService: PostService, private _carbon: CarbonLDP) {
+    console.log(this._carbon);
     this._postService.getPosts().subscribe(
       (data: Array<Post>) => {
         this.posts = data;
@@ -26,11 +28,4 @@ export class BlogComponent {
     console.log(e);
   }
 
-}
-
-export interface Post {
-  id?: number;
-  title: string;
-  body: string;
-  author: string;
 }

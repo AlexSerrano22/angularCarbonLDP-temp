@@ -20,7 +20,19 @@ export class PostService implements PostCarbon {
   getPost(id: string): Promise<Post & Document>;
 
   getAllPosts(): Promise<Array<Post & Document>> {
-    return this._carbon.documents.$getMembers('posts/');
+    return this._carbon.documents.$getMembers('posts/', _ => _
+      .properties({
+        'title': _.inherit,
+        'body': _.inherit,
+        'author': {
+          'query' : _ => _
+            .withType('Author')
+            .properties({
+              'name' : _.inherit
+            })
+        }
+      }
+      ));
   }
 
 
@@ -39,4 +51,5 @@ export interface Post {
   id?: number;
   title: string;
   body: string;
+  author?: string;
 }

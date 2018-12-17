@@ -19,4 +19,14 @@ carbon.extendObjectSchema('Post', {
   }
 });
 
+carbon.extendObjectSchema('Author', {
+  'name': {
+    '@type': 'string'
+  },
+  'posts': {
+    '@type': '@id',
+    '@container': '@set'
+  }
+});
+
 export default carbon;

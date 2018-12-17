@@ -7,6 +7,9 @@
     <label for="body">Body: </label>
     <textarea type="text" id="body" formControlName="body" class="form-control"></textarea>
   </div>
-
+  <div class="form-group">
+    <label for="title">Author URI: </label>
+    <input type="text" id="author" formControlName="author" class="form-control">
+  </div>
   <button type="submit" class="btn btn-primary" [disabled]="!newPostForm.valid">Submit</button>
 </form>

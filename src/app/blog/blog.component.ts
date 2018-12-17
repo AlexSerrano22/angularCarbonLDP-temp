@@ -18,6 +18,7 @@ export class BlogComponent {
     console.log(this._carbon);
     this._postService.getAllPosts().then(
       (data: Array<Post>) => {
+        console.log(data);
         this.posts = data;
       }
     );

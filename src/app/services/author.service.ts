@@ -17,7 +17,9 @@ export class AuthorService implements CarbonAuthors {
     return this._carbon.documents.$create('authors/', author, slug);
   }
 
-  linkPost(postID: string, authorID: string): Promise<Author & Document>;
+  linkPost(postID: string, authorID: string): Promise<any> {
+    return this._carbon.documents.$addMember(`${authorID}posts/`, postID);
+  }
 
 }
 

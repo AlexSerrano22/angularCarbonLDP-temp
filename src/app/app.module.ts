@@ -14,6 +14,7 @@ import { CommentsListComponent } from './comments/comments-list/comments-list.co
 import { HeaderComponent } from './nav/header/header.component';
 import {CarbonLDP} from 'carbonldp';
 import carbon from './carbon/carbon.config';
+import { CreatePostComponent } from './posts/create-post/create-post.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import carbon from './carbon/carbon.config';
     PostComponent,
     CommentComponent,
     CommentsListComponent,
-    HeaderComponent
+    HeaderComponent,
+    CreatePostComponent
   ],
   imports: [
     BrowserModule,

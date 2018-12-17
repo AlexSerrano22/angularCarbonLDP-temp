@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Post} from '../../blog/blog.component';
+import {Post} from '../../services/post.service';
 
 @Component({
   selector: 'app-post-list',
@@ -12,7 +12,7 @@ export class PostListComponent implements OnInit {
   @Input() postsArray: Array<Post> = [];
   @Output() clickElement: EventEmitter<any> = new EventEmitter();
 
-  constructor()  {
+  constructor() {
   }
 
   ngOnInit() {

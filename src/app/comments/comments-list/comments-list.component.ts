@@ -10,26 +10,25 @@ export class CommentsListComponent implements OnInit {
 
   comment: Comment = {
     body: '',
-    created: new Date()
   };
   comments: Array<Comment> = [];
 
   constructor(private _commentService: CommentsService) {
-    this._commentService.getAllComments().subscribe((data) => {
+    /*this._commentService.getAllComments().subscribe((data) => {
       this.comments = data;
-    });
+    });*/
   }
 
   ngOnInit() {
   }
 
   handleCreateComment() {
-    this._commentService.createComment(this.comment).subscribe((data) => {
+    /*this._commentService.createComment(this.comment).subscribe((data) => {
       this.comments.unshift(this.comment);
       this.comment = {
         body: '',
         created: new Date()
       };
-    });
+    });*/
   }
 }

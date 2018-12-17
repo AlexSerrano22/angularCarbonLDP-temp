@@ -8,10 +8,12 @@ export class AuthorService implements CarbonAuthors {
 
   constructor() {
   }
+/*
 
   createAuthor(author: Author): Promise<Author & Document>;
 
   linkPost(postID: string, authorID: string): Promise<Author & Document>;
+*/
 
 }
 

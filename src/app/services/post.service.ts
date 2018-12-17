@@ -11,7 +11,7 @@ export class PostService implements PostCarbon {
   constructor(private _http: HttpClient) {
   }
 
-  createPost(post: Post): Promise<Post & Document> {
+  /*createPost(post: Post): Promise<Post & Document> {
 
   }
 
@@ -21,7 +21,7 @@ export class PostService implements PostCarbon {
 
   getAllPosts(): Promise<Array<Post & Document>>{
 
-  }
+  }*/
 
 
 }

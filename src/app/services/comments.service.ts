@@ -10,7 +10,7 @@ export class CommentsService implements CarbonComments {
   constructor(private _http: HttpClient) {
   }
 
-  createComment(comment: Comment): Promise<Comment & Document> {
+  /*createComment(comment: Comment): Promise<Comment & Document> {
   }
 
   getPostComments(id: string): Promise<Array<Comment & Document>> {
@@ -21,7 +21,7 @@ export class CommentsService implements CarbonComments {
   }
 
   linkCommentToAuthor(authorID: string, commentID: string): Promise<Comment & Document>;
-
+*/
 }
 
 export interface Comment {

@@ -5,7 +5,7 @@ import {Document} from 'carbonldp/Document';
 @Injectable({
   providedIn: 'root'
 })
-export class CommentsService implements CarbonComments {
+export class CommentsService  {
 
   constructor(private _http: HttpClient) {
   }

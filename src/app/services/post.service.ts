@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Post} from '../blog/blog.component';
 import {Document} from 'carbonldp/Document';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostService implements PostCarbon {
+export class PostService {
 
   constructor(private _http: HttpClient) {
   }

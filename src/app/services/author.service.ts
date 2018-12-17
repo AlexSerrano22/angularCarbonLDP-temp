@@ -4,7 +4,7 @@ import {Document} from 'carbonldp/Document';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthorService implements CarbonAuthors {
+export class AuthorService {
 
   constructor() {
   }

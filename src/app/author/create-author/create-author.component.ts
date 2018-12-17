@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Author, AuthorService} from '../../services/author.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AccessPoint} from 'carbonldp/AccessPoint';
 
 @Component({
   selector: 'app-create-author',
@@ -29,7 +30,14 @@ export class CreateAuthorComponent implements OnInit {
     };
 
     this._authorService.createAuthor(author).then((authorDocument) => {
+      const postAccessPoint = AccessPoint.create({
+        hasMemberRelation: 'posts',
+        isMemberOfRelation: 'author'
+      });
 
+      return authorDocument.$create(postAccessPoint, 'posts');
+    }).then(() => {
+      this.newAuthorForm.reset();
     });
   }
 

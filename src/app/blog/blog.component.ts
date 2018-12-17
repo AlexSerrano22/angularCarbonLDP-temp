@@ -16,12 +16,11 @@ export class BlogComponent {
 
   constructor(private _postService: PostService, private _carbon: CarbonLDP) {
     console.log(this._carbon);
-    /*this._postService.getPosts().subscribe(
+    this._postService.getAllPosts().then(
       (data: Array<Post>) => {
         this.posts = data;
-      },
-      () => {
-      });*/
+      }
+    );
   }
 
   handleClick(e) {

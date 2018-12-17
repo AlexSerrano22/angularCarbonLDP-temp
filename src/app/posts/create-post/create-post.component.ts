@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Post} from '../../services/post.service';
+import {Post, PostService} from '../../services/post.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -18,10 +18,20 @@ export class CreatePostComponent implements OnInit {
     body: new FormControl(this.post.body, [Validators.required, Validators.minLength(4)])
   });
 
-  constructor() {
+  constructor(private _postService: PostService) {
   }
 
   ngOnInit() {
   }
 
+
+  createPost() {
+    const post = {
+      title: this.newPostForm.value.title,
+      body: this.newPostForm.value.body,
+    };
+    this._postService.createPost(post).then((document) => {
+      console.log(document);
+    });
+  }
 }

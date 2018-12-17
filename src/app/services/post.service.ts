@@ -1,26 +1,27 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {Document} from 'carbonldp/Document';
+import {CarbonLDP} from 'carbonldp';
+import {URI} from 'carbonldp/RDF';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class PostService implements PostCarbon {
 
-  constructor(private _http: HttpClient) {
+  constructor(private _carbon: CarbonLDP) {
   }
 
-  /*createPost(post: Post): Promise<Post & Document> {
-
+  createPost(post: Post): Promise<Post & Document> {
+    const slug = URI.getSlug(post.title);
+    post['types'] = ['Post'];
+    return this._carbon.documents.$create('posts/', post, slug);
   }
 
-  getPost(id: string): Promise<Post & Document> {
+  getPost(id: string): Promise<Post & Document>;
 
+  getAllPosts(): Promise<Array<Post & Document>> {
+    return this._carbon.documents.$getMembers('posts/');
   }
-
-  getAllPosts(): Promise<Array<Post & Document>>{
-
-  }*/
 
 
 }
@@ -28,7 +29,9 @@ export class PostService {
 
 export interface PostCarbon {
   createPost(post: Post): Promise<Post & Document>;
+
   getAllPosts(): Promise<Array<Post & Document>>;
+
   getPost(id: string): Promise<Post & Document>;
 }
 

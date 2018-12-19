@@ -1,9 +1,8 @@
 <ng-container *ngIf="post">
-  <h1>{{post.author}} - {{post.title}}</h1>
+  <h1>{{post.author.name}} - {{post.title}}</h1>
   <p>
     {{post.body}}
   </p>
+
+  <app-comments-list [postID]="post.$id"></app-comments-list>
 </ng-container>
-
-
-<app-comments-list></app-comments-list>

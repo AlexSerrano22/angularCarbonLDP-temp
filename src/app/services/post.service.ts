@@ -17,22 +17,46 @@ export class PostService implements PostCarbon {
     return this._carbon.documents.$create('posts/', post, slug);
   }
 
-  getPost(id: string): Promise<Post & Document>;
+  getPost(id: string): Promise<Post & Document> {
+    return this._carbon.documents.$get(`posts/${id}/`, _ => _
+      .properties({
+          'title': _.inherit,
+          'body': _.inherit,
+          'author': {
+            'query': _ => _
+              .withType('Author')
+              .properties({
+                'name': _.inherit
+              })
+          }
+        }
+      ));
+  }
 
   getAllPosts(): Promise<Array<Post & Document>> {
     return this._carbon.documents.$getMembers('posts/', _ => _
       .properties({
-        'title': _.inherit,
-        'body': _.inherit,
-        'author': {
-          'query' : _ => _
-            .withType('Author')
-            .properties({
-              'name' : _.inherit
-            })
+          'title': _.inherit,
+          'body': _.inherit,
+          'author': {
+            'query': _ => _
+              .withType('Author')
+              .properties({
+                'name': _.inherit
+              })
+          }
         }
-      }
       ));
+  }
+
+  sub() {
+    this._carbon.documents.$get('posts/').then((doc) => {
+      doc.$onChildCreated((event) => {
+        console.log(event.details.createdDocuments);
+      }, (error) => {
+        console.error(error);
+      });
+    });
   }
 
 

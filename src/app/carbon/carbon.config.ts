@@ -26,6 +26,23 @@ carbon.extendObjectSchema('Author', {
   'posts': {
     '@type': '@id',
     '@container': '@set'
+  },
+  'comments': {
+    '@type': '@id',
+    '@container': '@set'
+  }
+});
+
+
+carbon.extendObjectSchema('Comment', {
+  'body': {
+    '@type': 'string'
+  },
+  'author': {
+    '@type': '@id',
+  },
+  'post': {
+    '@type': '@id'
   }
 });
 

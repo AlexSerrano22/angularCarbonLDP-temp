@@ -22,6 +22,8 @@ export class BlogComponent {
         this.posts = data;
       }
     );
+
+     this._postService.sub();
   }
 
   handleClick(e) {

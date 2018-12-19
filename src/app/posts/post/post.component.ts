@@ -15,13 +15,13 @@ export class PostComponent implements OnInit {
 
   constructor(private _route: ActivatedRoute,
               private _postService: PostService) {
-   /* this._route.paramMap.pipe(
+    this._route.paramMap.pipe(
       switchMap((params: ParamMap) =>
         this._postService.getPost(params.get('id'))
       )
     ).subscribe((post: Post) => {
       this.post = post;
-    });*/
+    });
   }
 
 

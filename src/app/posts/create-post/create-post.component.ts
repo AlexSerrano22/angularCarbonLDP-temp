@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Post, PostService} from '../../services/post.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthorService} from '../../services/author.service';
+import {AccessPoint} from 'carbonldp/AccessPoint';
 
 @Component({
   selector: 'app-create-post',
@@ -34,6 +35,17 @@ export class CreatePostComponent implements OnInit {
       body: this.newPostForm.value.body,
     };
     this._postService.createPost(post).then((document) => {
+
+      const commentAccessPoint = AccessPoint.create({
+        hasMemberRelation: 'comments',
+        isMemberOfRelation: 'post'
+      });
+
+      document.$create(commentAccessPoint, 'comments');
+
+      return document.$refresh();
+
+    }).then((document) => {
       return this._authorService.linkPost(document.$id, this.newPostForm.value.author);
     }).then(() => {
       this.newPostForm.reset();
